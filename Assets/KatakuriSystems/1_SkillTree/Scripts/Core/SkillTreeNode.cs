@@ -9,12 +9,12 @@ namespace Katakuri.SystemsWorkshop.SkillTree1
     /// Represents a node inside a SkillTree, responsible for holding its own SkillTreeNodeData and the required Nodes to interact with it.
     /// It also holds its own unlocked state.
     /// </summary>
-    public class SkillTreeNodeUI : MonoBehaviour
+    public class SkillTreeNode : MonoBehaviour
     {
         [SerializeField] private SkillTreeNodeData _nodeData; // The SkillTreeNodeData that this node is controlling
         public SkillTreeNodeData NodeData => _nodeData;
-        [SerializeField] private SkillTreeNodeUI[] _requiredNodeList; // The required nodes for this node to be interactable
-        public SkillTreeNodeUI[] RequiredNodeList => _requiredNodeList;
+        [SerializeField] private SkillTreeNode[] _requiredNodeList; // The required nodes for this node to be interactable
+        public SkillTreeNode[] RequiredNodeList => _requiredNodeList;
 
         public bool IsRootNode; // Root node does not require any node to be interactable
         public bool IsUnlocked;
@@ -32,7 +32,7 @@ namespace Katakuri.SystemsWorkshop.SkillTree1
         /// Sets what should happen if this node is clicked, for example showing the node's data in the info panel.
         /// </summary>
         /// <param name="onClick"></param>
-        public void SetOnClick(Action<SkillTreeNodeUI> onClick)
+        public void SetOnClick(Action<SkillTreeNode> onClick)
         {
             _nodeButton.onClick.RemoveAllListeners();
             _nodeButton.onClick.AddListener(() => onClick(this));
@@ -58,7 +58,7 @@ namespace Katakuri.SystemsWorkshop.SkillTree1
             if(_requiredNodeList != null && _requiredNodeList.Length > 0)
             {
                 Gizmos.color = Color.yellow;
-                foreach(SkillTreeNodeUI requiredNode in _requiredNodeList)
+                foreach(SkillTreeNode requiredNode in _requiredNodeList)
                 {
                     if(requiredNode != null)
                     {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2259901439991305989}
   - component: {fileID: 2259901439991305990}
   m_Layer: 5
-  m_Name: StraightLine
+  m_Name: LineStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

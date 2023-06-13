@@ -88,9 +88,9 @@ GameObject:
   - component: {fileID: 8773342170037175610}
   - component: {fileID: 8773342170037175605}
   - component: {fileID: 8773342170037175604}
-  - component: {fileID: 8773342170037175607}
+  - component: {fileID: 1963808977623622818}
   m_Layer: 5
-  m_Name: AcquireNode
+  m_Name: NodeAcquire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8773342170037175607
+--- !u!114 &1963808977623622818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8773342170037175601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a2136b114093e3419a5bcecc2f74f33, type: 3}
+  m_Script: {fileID: 11500000, guid: 161047074d1949a4a811c4268ba23c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _nodeData: {fileID: 0}
@@ -314,8 +314,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

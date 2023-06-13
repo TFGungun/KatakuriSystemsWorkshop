@@ -11,18 +11,18 @@ namespace Katakuri.SystemsWorkshop.SkillTree1
     /// </summary>
     public class SkillTree : MonoBehaviour
     {
-        [SerializeField] private SkillTreeNodeUI[] _treeNodeList;
-        public SkillTreeNodeUI[] TreeNodeList => _treeNodeList;
+        [SerializeField] private SkillTreeNode[] _treeNodeList;
+        public SkillTreeNode[] TreeNodeList => _treeNodeList;
 
         public Func<SkillTreeNodeData, bool> CheckNodeUnlocked; // Function to check if a node has been unlocked (usually in SaveData)
-        public Action<SkillTreeNodeUI> OnClickNode; // Action to execute when a node is clicked
+        public Action<SkillTreeNode> OnClickNode; // Action to execute when a node is clicked
 
         /// <summary>
         /// Refreshes the nodes' interactable and unlocked states in the skill tree.
         /// </summary>
         public void RefreshSkillTree()
         {
-            foreach(SkillTreeNodeUI node in _treeNodeList)
+            foreach(SkillTreeNode node in _treeNodeList)
             {
                 node.SetNode(
                     isUnlockable: node.IsRootNode || CheckNodeFulfilRequirements(node),
@@ -37,7 +37,7 @@ namespace Katakuri.SystemsWorkshop.SkillTree1
         /// </summary>
         /// <param name="node">The SkillTreeNodeUI that we want to check.</param>
         /// <returns>Whether the node has fulfilled its required nodes.</returns>
-        private bool CheckNodeFulfilRequirements(SkillTreeNodeUI node)
+        private bool CheckNodeFulfilRequirements(SkillTreeNode node)
         {
             bool fulfilRequirements = true;
 

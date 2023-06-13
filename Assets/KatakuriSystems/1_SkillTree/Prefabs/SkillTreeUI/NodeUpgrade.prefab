@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -147,9 +147,9 @@ GameObject:
   - component: {fileID: 6259649318216898416}
   - component: {fileID: 6259649318216898431}
   - component: {fileID: 6259649318216898430}
-  - component: {fileID: 6259649318216898429}
+  - component: {fileID: 4389290237072570662}
   m_Layer: 5
-  m_Name: UpgradeNode
+  m_Name: NodeUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6259649318216898429
+--- !u!114 &4389290237072570662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6259649318216898427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a2136b114093e3419a5bcecc2f74f33, type: 3}
+  m_Script: {fileID: 11500000, guid: 161047074d1949a4a811c4268ba23c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _nodeData: {fileID: 0}

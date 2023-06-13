@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7387062805412191532}
   - component: {fileID: 7387062805412191533}
   m_Layer: 5
-  m_Name: LeftSkewLine
+  m_Name: LineLeftSkew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

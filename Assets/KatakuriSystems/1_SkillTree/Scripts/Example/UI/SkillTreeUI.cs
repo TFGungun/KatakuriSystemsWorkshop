@@ -28,7 +28,7 @@ namespace Katakuri.SystemsWorkshop.SkillTree1
         [SerializeField] private TMP_Text _skillDescriptionText;
         [SerializeField] private Button _unlockNodeButton;
 
-        private SkillTreeNodeUI _currentActiveNode;
+        private SkillTreeNode _currentActiveNode;
 
         public event Action OnUpdateSkillTree;
 
@@ -65,7 +65,7 @@ namespace Katakuri.SystemsWorkshop.SkillTree1
             return _treeSaveData.IsNodeUnlocked(nodeData.NodeKey);
         }
 
-        private void OnClickNode(SkillTreeNodeUI node)
+        private void OnClickNode(SkillTreeNode node)
         {
             _currentActiveNode = node;
 
