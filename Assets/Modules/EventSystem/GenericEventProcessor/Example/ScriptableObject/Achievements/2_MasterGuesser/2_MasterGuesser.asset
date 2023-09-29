@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f340c5c2f48ed41a2f2f9f6cca72cf, type: 3}
   m_Name: 2_MasterGuesser
   m_EditorClassIdentifier: 
+  ID: 2
   Name: Master Guesser
+  Description: Guess the correct number!
   Progress: 0
   Target: 1
   IsCompleted: 0

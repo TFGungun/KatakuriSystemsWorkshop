@@ -6,25 +6,26 @@ namespace Katakuri.Modules.Event.Test
 {
     public class AchievementEventProcessor : EventProcessor<AchievementData>
     {
-        private AchievementManager _manager;
+        private AchievementMonitor _monitor;
         public AchievementEventProcessor(AchievementData target) : base(target)
         {
             
             
         }
 
-        public void InitializeAchievementProcessor(AchievementManager manager)
+        public void InitializeAchievementProcessor(AchievementMonitor monitor)
         {
-            _manager = manager;
+            _monitor = monitor;
             InitializeProcessor();
         }
 
         protected override void ExecuteAction()
         {
             base.ExecuteAction();
+            _monitor.UpdateAchievement(this);
             if(Target.IsCompleted)
             {
-                _manager.CompleteAchievement(this);
+                _monitor.CompleteAchievement(this);
             }
         }
 

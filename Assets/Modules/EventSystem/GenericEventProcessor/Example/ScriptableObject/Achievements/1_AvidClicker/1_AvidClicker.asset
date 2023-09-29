@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f340c5c2f48ed41a2f2f9f6cca72cf, type: 3}
   m_Name: 1_AvidClicker
   m_EditorClassIdentifier: 
+  ID: 1
   Name: Avid Clicker
+  Description: Click the Button 10 Times
   Progress: 0
   Target: 10
   IsCompleted: 0

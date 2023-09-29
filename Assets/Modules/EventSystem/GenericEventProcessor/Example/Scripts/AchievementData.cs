@@ -6,7 +6,10 @@ namespace Katakuri.Modules.Event.Test
     public class AchievementData : ScriptableObject
     {
         [Header("Details")]
+        public int ID;
         public string Name;
+        [TextArea(3, 5)]
+        public string Description;
         public int Progress;
         public int Target;
 

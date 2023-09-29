@@ -1,26 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 namespace Katakuri.Modules.Event.Test
 {
     public class ExampleScript : MonoBehaviour
     {
-        [SerializeField] private AchievementManager _achievementManager;
-        [SerializeField] private List<AchievementData> _achievementToMonitor;
-        public bool RegisterAchievementOnStart = true;
+        [SerializeField] private Button _clickButton;
+        [SerializeField] private TMP_InputField _guessField;
+        [SerializeField] private Button _guessButton;
 
         private void Start() 
         {
-            if(RegisterAchievementOnStart) RegisterAllAchievement();
+            _clickButton.onClick.AddListener(OnClickButton);
+            _guessButton.onClick.AddListener(OnGuessNumber);
         }
 
-        [ContextMenu("Register All Achievement")]
-        public void RegisterAllAchievement()
+        private void OnClickButton()
         {
-            foreach(AchievementData achievementData in _achievementToMonitor)
+            EventManager.TriggerEvent<ExampleEvent.ClickButtonEvent>();
+        }
+
+        private void OnGuessNumber()
+        {
+            if(int.TryParse(_guessField.text, out int num))
             {
-                _achievementManager.RegisterAchievement(achievementData);
+                EventManager.TriggerEvent(new ExampleEvent.SubmitValueEvent(num));
             }
         }
     }
