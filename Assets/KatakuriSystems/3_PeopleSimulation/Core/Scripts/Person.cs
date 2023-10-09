@@ -4,53 +4,58 @@ using UnityEngine;
 
 namespace Katakuri.SystemsWorkshop.PersonSimulation
 {
-    public abstract class Person<U, V> : ScriptableObject
-        where U : Status
-        where V : SimulationContext
+    /// <summary>
+    /// Represents a Scriptable Object containing the data of a Person
+    /// </summary>
+    /// <typeparam name="TStatus"></typeparam>
+    /// <typeparam name="TContext"></typeparam>
+    public abstract class Person<TStatus, TContext> : ScriptableObject
+        where TStatus : Status
+        where TContext : SimulationContext
     {
-        public U Status;
-        public List<Activity<U, V>> Activities;
+        public TStatus Status;
+        public List<Activity<TStatus, TContext>> Activities;
 
-        public PersonBehaviour<U, V> GetPersonBehaviour()
+        public PersonBehaviour<TStatus, TContext> GetPersonBehaviour()
         {
-            return new PersonBehaviour<U, V>(Status, Activities);
+            return new PersonBehaviour<TStatus, TContext>(Status, Activities);
         }
     }
 
-    public abstract class PersonBehaviour
+    /// <summary>
+    /// Represents the Person as a simulation instance in the world
+    /// </summary>
+    /// <typeparam name="TStatus"></typeparam>
+    /// <typeparam name="TContext"></typeparam>
+    public class PersonBehaviour<TStatus, TContext>
+        where TStatus : Status
+        where TContext : SimulationContext
     {
+        private TStatus _status;
+        private List<Activity<TStatus, TContext>> _activities;
+        public ActivityBehaviour<TStatus> CurrentActivity;
 
-    }
-
-    public class PersonBehaviour<U, V> : PersonBehaviour
-        where U : Status
-        where V : SimulationContext
-    {
-        public U Status;
-        public List<Activity<U, V>> Activities;
-        public ActivityBehaviour<U> CurrentActivity;
-
-        public PersonBehaviour(U status, List<Activity<U, V>> activities)
+        public PersonBehaviour(TStatus status, List<Activity<TStatus, TContext>> activities)
         {
-            Status = status;
-            Activities = activities;
+            _status = status;
+            _activities = activities;
         }
 
-        public void Update(float tick, V context)
+        public void Update(float tick, TContext context)
         {
-            if(CurrentActivity != null) CurrentActivity.Update(tick, Status);
+            if(CurrentActivity != null) CurrentActivity.Update(tick, _status);
 
-            if(TryGetValidActivity(out Activity<U, V> validActivity, context))
+            if(TryGetValidActivity(out Activity<TStatus, TContext> validActivity, context))
             {
-                ActivityBehaviour<U> newActivity = validActivity.GetActivityBehaviour();
-                if(CurrentActivity != null && CurrentActivity.GetType() == newActivity.GetType()) return;
+                ActivityBehaviour<TStatus> newActivity = validActivity.GetActivityBehaviour();
+                if(CurrentActivity != null && CurrentActivity.GetType() == newActivity.GetType()) return; // If the activities are the same type, do not transition
                 CurrentActivity = newActivity;
             }
         }
 
-        public bool TryGetValidActivity(out Activity<U, V> validActivity, V context)
+        public bool TryGetValidActivity(out Activity<TStatus, TContext> validActivity, TContext context)
         {
-            validActivity = Activities.Find((activity) => activity.CheckValidity(Status, context));
+            validActivity = _activities.Find((activity) => activity.CheckValidity(_status, context));
             return validActivity != null;
         }
     }

@@ -4,31 +4,37 @@ using UnityEngine;
 
 namespace Katakuri.SystemsWorkshop.PersonSimulation
 {
-    public abstract class Simulator<U, V, W> : MonoBehaviour
-        where U : Person<V, W>
-        where V : Status
-        where W : SimulationContext
+    /// <summary>
+    /// Represent a simulator where all the Person are running
+    /// </summary>
+    /// <typeparam name="TPerson"></typeparam>
+    /// <typeparam name="TStatus"></typeparam>
+    /// <typeparam name="TContext"></typeparam>
+    public abstract class Simulator<TPerson, TStatus, TContext> : MonoBehaviour
+        where TPerson : Person<TStatus, TContext>
+        where TStatus : Status
+        where TContext : SimulationContext
     {
-        public List<PersonBehaviour<V, W>> PersonBehaviours = new List<PersonBehaviour<V, W>>();
-        public W Context;
+        private List<PersonBehaviour<TStatus, TContext>> _personBehaviours = new List<PersonBehaviour<TStatus, TContext>>();
+        public TContext Context;
 
-        public void RegisterPeople(List<U> people)
+        public void RegisterPeople(List<TPerson> people)
         {
-            foreach(U person in people)
+            foreach(TPerson person in people)
             {
                 RegisterPerson(person);
             }
         }
 
-        protected virtual void RegisterPerson(U person)
+        protected virtual void RegisterPerson(TPerson person)
         {
-            PersonBehaviour<V, W> behaviour = person.GetPersonBehaviour();
-            PersonBehaviours.Add(behaviour);
+            PersonBehaviour<TStatus, TContext> behaviour = person.GetPersonBehaviour();
+            _personBehaviours.Add(behaviour);
         }
 
         protected virtual void UpdateBehaviours(float tick)
         {
-            foreach(PersonBehaviour<V, W> behaviour in PersonBehaviours)
+            foreach(PersonBehaviour<TStatus, TContext> behaviour in _personBehaviours)
             {
                 behaviour.Update(tick, Context);
             }

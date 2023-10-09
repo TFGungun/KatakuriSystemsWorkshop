@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: 1_Smith
   m_EditorClassIdentifier: 
   Status:
-    Money: 1
+    Money: 13
+    Inventory: {fileID: 0}
   Activities:
-  - {fileID: 11400000, guid: 33d06313c9bb0fd4eb8fc2da0efcbabd, type: 2}
   - {fileID: 11400000, guid: 893637089effc6b41b21bd3ebaaba727, type: 2}
+  - {fileID: 11400000, guid: 33d06313c9bb0fd4eb8fc2da0efcbabd, type: 2}
+  ID: 0
+  Name: 

@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 1697243283}
   - component: {fileID: 1697243282}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: VillageSimulator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Context:
-    Days: 0
+    Time: 0
+    Day: 0
   Villagers:
   - {fileID: 11400000, guid: df8f4e7e84cb65b4aad0f684db17bfd0, type: 2}
 --- !u!4 &1697243283

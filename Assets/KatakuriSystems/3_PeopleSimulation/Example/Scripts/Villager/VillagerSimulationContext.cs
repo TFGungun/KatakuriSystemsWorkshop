@@ -7,7 +7,8 @@ namespace Katakuri.SystemsWorkshop.PersonSimulation.Example1
     [System.Serializable]
     public class VillagerSimulationContext : SimulationContext
     {
-        public int Days;
+        public int Time;
+        public int Day;
     }
 }
 

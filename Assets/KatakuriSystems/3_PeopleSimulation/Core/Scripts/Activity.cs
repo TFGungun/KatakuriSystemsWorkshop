@@ -4,24 +4,33 @@ using UnityEngine;
 
 namespace Katakuri.SystemsWorkshop.PersonSimulation
 {
-    public abstract class Activity<U, V> : ScriptableObject 
-        where U : Status
-        where V : SimulationContext
+    /// <summary>
+    /// Represents an activity which can be executed by a Person
+    /// </summary>
+    /// <typeparam name="TStatus"></typeparam>
+    /// <typeparam name="TContext"></typeparam>
+    public abstract class Activity<TStatus, TContext> : ScriptableObject 
+        where TStatus : Status
+        where TContext : SimulationContext
     {
-        public List<ActivityRequirement<U, V>> Requirements;
+        public List<ActivityRequirement<TStatus, TContext>> Requirements;
 
-        public bool CheckValidity(U status, V context)
+        public bool CheckValidity(TStatus status, TContext context)
         {
             return Requirements.TrueForAll((requirement) => requirement.CheckValidity(status, context));
         }
 
-        public abstract ActivityBehaviour<U> GetActivityBehaviour();
+        public abstract ActivityBehaviour<TStatus> GetActivityBehaviour();
     }
 
-    public abstract class ActivityBehaviour<T>
-        where T : Status
+    /// <summary>
+    /// Represents the Activity as a simulation instance in the world
+    /// </summary>
+    /// <typeparam name="TStatus"></typeparam>
+    public abstract class ActivityBehaviour<TStatus>
+        where TStatus : Status
     {
-        public abstract void Update(float tick, T status);
+        public abstract void Update(float tick, TStatus status);
     }
 }
 

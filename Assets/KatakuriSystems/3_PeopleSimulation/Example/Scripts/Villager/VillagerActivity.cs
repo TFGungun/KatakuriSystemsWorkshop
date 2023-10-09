@@ -6,7 +6,6 @@ namespace Katakuri.SystemsWorkshop.PersonSimulation.Example1
 {
     public abstract class VillagerActivity : Activity<VillagerStatus, VillagerSimulationContext>
     {
-
     }
 }
 

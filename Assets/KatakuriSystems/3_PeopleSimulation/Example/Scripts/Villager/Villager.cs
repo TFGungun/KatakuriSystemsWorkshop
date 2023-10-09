@@ -7,7 +7,8 @@ namespace Katakuri.SystemsWorkshop.PersonSimulation.Example1
     [CreateAssetMenu(menuName = "Katakuri/PersonSimulation/Example1/Villager")]
     public class Villager : Person<VillagerStatus, VillagerSimulationContext>
     {
-        
+        public int ID;
+        public string Name;
     }
 }
 
