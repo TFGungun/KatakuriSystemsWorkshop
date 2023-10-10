@@ -7,7 +7,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
 {
     public class InventoryPanelUI : MonoBehaviour
     {
-        [SerializeField] private StackingInventory _inventory;
+        [SerializeField] private ItemInventory _inventory;
         [SerializeField] private ItemDatabase _itemDatabase;
 
         [Header("UI")]
@@ -17,18 +17,18 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
 
         private void OnEnable() 
         {
-            _inventory.OnInventoryUpdated += UpdateInventoryPanel;
+            _inventory.Content.OnStackUpdated += UpdateInventoryPanel;
         }
 
         private void OnDestroy() 
         {
-            _inventory.OnInventoryUpdated -= UpdateInventoryPanel;
+            _inventory.Content.OnStackUpdated -= UpdateInventoryPanel;
         }
 
         private void Awake() 
         {
             _instantiatedItemDisplay = new List<ItemDisplayUI>();
-            _inventory.GetMaxItemStack = _itemDatabase.GetItemMaxStack;
+            _inventory.Content.GetMaxItemStack = _itemDatabase.GetItemMaxStack;
         }
 
         private void UpdateInventoryPanel()
@@ -44,7 +44,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
                 _instantiatedItemDisplay.Clear();
             }
 
-            foreach(StackingInventory.ItemStack itemStack in _inventory.InventoryContent)
+            foreach(StackingInventory.ItemStack itemStack in _inventory.Content.Stack)
             {
                 ItemDisplayUI itemDisplay = Instantiate(_itemDisplayPrefab, _itemDisplayParent);
                 itemDisplay.SetItemDisplay(_itemDatabase.GetItemSprite(itemStack.ItemID), itemStack.ItemAmount, () => OnClickItemDisplay(itemStack));
@@ -53,7 +53,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
 
             void OnClickItemDisplay(StackingInventory.ItemStack itemStack)
             {
-                _inventory.RemoveItem(itemStack.ItemID, 1);
+                _inventory.Content.RemoveItem(itemStack.ItemID, 1);
             }
         }
     }

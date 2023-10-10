@@ -9,7 +9,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example2
 {
     public class InventoryDisplayUI : MonoBehaviour
     {
-        [SerializeField] private StackingInventory _inventory;
+        [SerializeField] private ItemInventory _inventory;
         [SerializeField] private List<InventorySlotUI> _availableSlotList;
         [SerializeField] private ItemDatabase _itemDatabase;
 
@@ -39,15 +39,15 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example2
 
         private void InitializeInventoryDisplay()
         {
-            _inventory.GetMaxItemStack = _itemDatabase.GetItemMaxStack;
+            _inventory.Content.GetMaxItemStack = _itemDatabase.GetItemMaxStack;
 
             for (int i = 0; i < _availableSlotList.Count; i++)
             {
                 _availableSlotList[i].SetInventoryDisplay(this);
-                if(i < _inventory.InventoryContent.Count)
+                if(i < _inventory.Content.Stack.Count)
                 {
-                    Sprite itemSprite = _itemDatabase.GetItemSprite(_inventory.InventoryContent[i].ItemID);
-                    _availableSlotList[i].FillSlot(_inventory.InventoryContent[i], itemSprite);
+                    Sprite itemSprite = _itemDatabase.GetItemSprite(_inventory.Content.Stack[i].ItemID);
+                    _availableSlotList[i].FillSlot(_inventory.Content.Stack[i], itemSprite);
                 } else
                 {
                     _availableSlotList[i].FillSlot(null, null);
@@ -73,7 +73,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example2
             if(inventoryItem == null) return;
 
             StackingInventory.ItemStack itemStack = inventoryItem.ItemStack;
-            _inventory.RemoveItemStack(itemStack);
+            _inventory.Content.RemoveItemStack(itemStack);
 
             inventoryItem.Slot.FillSlot(null, null);
         }
@@ -117,7 +117,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example2
                         slot.FillSlot(slot.Item.ItemStack, sprite);
                     } else
                     {
-                        _inventory.RemoveItemStack(item.ItemStack);
+                        _inventory.Content.RemoveItemStack(item.ItemStack);
                         item.Slot.FillSlot(null, null);
                         slot.FillSlot(slot.Item.ItemStack, sprite);
                     }

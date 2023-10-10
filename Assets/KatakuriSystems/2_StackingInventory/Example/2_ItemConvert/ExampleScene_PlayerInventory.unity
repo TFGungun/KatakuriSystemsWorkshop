@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6077bee18838b344a310cfbc895927e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventory: {fileID: 635538533}
+  _inventory: {fileID: 635538535}
   _availableSlotList:
   - {fileID: 528227799835026403}
   - {fileID: 519962989}
@@ -1843,7 +1843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 635538534}
-  - component: {fileID: 635538533}
+  - component: {fileID: 635538535}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -1851,69 +1851,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &635538533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 635538532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edda48c9ebecac043864e7b3f8562b78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventoryContent:
-  - ItemID: 1
-    ItemAmount: 5
-  - ItemID: 1
-    ItemAmount: 9
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
-  - ItemID: 1
-    ItemAmount: 2
 --- !u!4 &635538534
 Transform:
   m_ObjectHideFlags: 0
@@ -1929,6 +1866,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &635538535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635538532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4865cefbb2bf4ad4d9aa0e62d33970f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _content:
+    _stack:
+    - ItemID: 1
+      ItemAmount: 9
+    - ItemID: 1
+      ItemAmount: 4
 --- !u!1 &708597628
 GameObject:
   m_ObjectHideFlags: 0

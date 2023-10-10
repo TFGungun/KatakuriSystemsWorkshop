@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72e7b1a654baa7438854f372fc59262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventory: {fileID: 1150841886}
+  _inventory: {fileID: 1150841888}
   _itemDatabase: {fileID: 118037398}
   _itemDisplayPrefab: {fileID: 2822462053590891758, guid: 472349dbcee40d64e81afd1d861c69e5, type: 3}
   _instantiatedItemDisplay: []
@@ -1164,7 +1164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1150841887}
-  - component: {fileID: 1150841886}
+  - component: {fileID: 1150841888}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -1172,19 +1172,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1150841886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150841885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edda48c9ebecac043864e7b3f8562b78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventoryContent: []
 --- !u!4 &1150841887
 Transform:
   m_ObjectHideFlags: 0
@@ -1200,6 +1187,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1150841888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150841885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4865cefbb2bf4ad4d9aa0e62d33970f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _content:
+    _stack: []
 --- !u!1 &1550996869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,7 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aedc4ba2be29cd41a60c12ec3b497cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventory: {fileID: 1150841886}
+  _inventory: {fileID: 1150841888}
   _itemDatabase: {fileID: 118037398}
   _itemDisplayPrefab: {fileID: 2822462053590891758, guid: 472349dbcee40d64e81afd1d861c69e5, type: 3}
   _instantiatedItemDisplay: []

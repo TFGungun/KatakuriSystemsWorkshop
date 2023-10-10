@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Katakuri.SystemsWorkshop.StackingInventory1
 {
-    public class StackingInventory : MonoBehaviour
+    [System.Serializable]
+    public class StackingInventory
     {
         [System.Serializable]
         public class ItemStack
@@ -21,10 +22,10 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1
             }
         }
 
-        [SerializeField] private List<ItemStack> _inventoryContent;
-        public List<ItemStack> InventoryContent => _inventoryContent;
-        public Func<int, int> GetMaxItemStack; // Function to get the max stack of an item, should return -1 if item doesn't exist.
-        public event Action OnInventoryUpdated;
+        [SerializeField] private List<ItemStack> _stack;
+        public List<ItemStack> Stack => _stack;
+        public Func<int, int> GetMaxItemStack; // Function to get the max amount of stack of an item, should return -1 if item doesn't exist.
+        public event Action OnStackUpdated;
         /// <summary>
         /// Adds an item to the inventory. If the item is already inside, add it to the stack with highest amount.
         /// </summary>
@@ -32,7 +33,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1
         /// <param name="amount"></param>
         public void AddItem(int ID, int amount = 1)
         {
-            int stackCount = _inventoryContent.Count((stack) => stack.ItemID == ID);
+            int stackCount = _stack.Count((stack) => stack.ItemID == ID);
 
             if(stackCount == 0)
             {
@@ -41,11 +42,11 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1
             } else
             {
                 // Multiple stacks exist in the inventory
-                var itemStackArr = _inventoryContent.Where((stack) => stack.ItemID == ID).OrderByDescending((stack) => stack.ItemAmount).ToArray();
+                var itemStackArr = _stack.Where((stack) => stack.ItemID == ID).OrderByDescending((stack) => stack.ItemAmount).ToArray();
                 AddAmountToAvailableStack(itemStackArr, ID, amount);
             }
 
-            OnInventoryUpdated?.Invoke();
+            OnStackUpdated?.Invoke();
 
             // Adds a new Item Stack entry to inventory
             void AddNewItemEntry(int ID, int amount)
@@ -64,7 +65,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1
                     }
                     
                     ItemStack entry = new ItemStack(ID, entryAmount);
-                    _inventoryContent.Add(entry);
+                    _stack.Add(entry);
 
                     amount -= entryAmount;
                 }
@@ -98,13 +99,13 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1
 
         public void RemoveItem(int ID, int amount = 1)
         {
-            int totalAvailable = _inventoryContent.Where((stack) => stack.ItemID == ID).Sum((stack) => stack.ItemAmount);
+            int totalAvailable = _stack.Where((stack) => stack.ItemID == ID).Sum((stack) => stack.ItemAmount);
 
             if(totalAvailable >= amount)
             {
-                var itemStackArr = _inventoryContent.Where((stack) => stack.ItemID == ID).OrderByDescending((stack) => stack.ItemAmount).ToArray();
+                var itemStackArr = _stack.Where((stack) => stack.ItemID == ID).OrderByDescending((stack) => stack.ItemAmount).ToArray();
                 RemoveAmountFromAvailableStack(itemStackArr, ID, amount);
-                OnInventoryUpdated?.Invoke();
+                OnStackUpdated?.Invoke();
             }
 
             void RemoveAmountFromAvailableStack(ItemStack[] itemStackArr, int ID, int amount)
@@ -128,13 +129,13 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1
 
             void RemoveItemEntry(ItemStack itemStack)
             {
-                _inventoryContent.Remove(itemStack);
+                _stack.Remove(itemStack);
             }
         }
 
         public void RemoveItemStack(ItemStack itemStack)
         {
-            _inventoryContent.Remove(itemStack);
+            _stack.Remove(itemStack);
         }
 
         public void RemoveAmountFromItemStack(ItemStack itemStack, int amount)
@@ -148,7 +149,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1
             {
                 RemoveItemStack(itemStack);
             }
-            OnInventoryUpdated?.Invoke();
+            OnStackUpdated?.Invoke();
 
         }
     }

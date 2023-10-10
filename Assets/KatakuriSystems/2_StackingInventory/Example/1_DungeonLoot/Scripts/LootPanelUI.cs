@@ -7,7 +7,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
 {
     public class LootPanelUI : MonoBehaviour
     {
-        [SerializeField] private StackingInventory _inventory;
+        [SerializeField] private ItemInventory _inventory;
         [SerializeField] private ItemDatabase _itemDatabase;
 
         [Header("UI")]
@@ -51,7 +51,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
             void OnClickItemDisplay(StackingInventory.ItemStack itemStack)
             {
                 _currentLootList.Remove(itemStack);
-                _inventory.AddItem(itemStack.ItemID, itemStack.ItemAmount);
+                _inventory.Content.AddItem(itemStack.ItemID, itemStack.ItemAmount);
                 UpdateLootPanel();
             }
         }
