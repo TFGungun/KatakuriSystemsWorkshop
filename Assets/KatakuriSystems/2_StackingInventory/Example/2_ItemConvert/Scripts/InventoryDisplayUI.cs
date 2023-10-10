@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Katakuri.Modules.DragDrop;
+using Katakuri.SystemsWorkshop.StackingInventory1.Example;
 
 namespace Katakuri.SystemsWorkshop.StackingInventory1.Example2
 {

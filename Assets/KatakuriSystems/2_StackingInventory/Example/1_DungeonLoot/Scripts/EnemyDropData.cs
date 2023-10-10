@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Katakuri.SystemsWorkshop.StackingInventory1.Example;
 
 namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
 {

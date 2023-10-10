@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Katakuri.SystemsWorkshop.StackingInventory1
+namespace Katakuri.SystemsWorkshop.StackingInventory1.Example
 {
     [CreateAssetMenu(menuName = "Katakuri/StackingInventory1/ItemData")]
     public class ItemData : ScriptableObject

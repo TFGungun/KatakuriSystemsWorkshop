@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Katakuri.SystemsWorkshop.StackingInventory1.Example;
 
 namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
 {
-    public class LootPanelUI : MonoBehaviour
+    public class InventoryPanelUI : MonoBehaviour
     {
         [SerializeField] private StackingInventory _inventory;
         [SerializeField] private ItemDatabase _itemDatabase;
@@ -14,20 +15,23 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
         [SerializeField] private List<ItemDisplayUI> _instantiatedItemDisplay;
         [SerializeField] private RectTransform _itemDisplayParent;
 
-        [SerializeField] private List<StackingInventory.ItemStack> _currentLootList;
+        private void OnEnable() 
+        {
+            _inventory.OnInventoryUpdated += UpdateInventoryPanel;
+        }
+
+        private void OnDestroy() 
+        {
+            _inventory.OnInventoryUpdated -= UpdateInventoryPanel;
+        }
 
         private void Awake() 
         {
             _instantiatedItemDisplay = new List<ItemDisplayUI>();
+            _inventory.GetMaxItemStack = _itemDatabase.GetItemMaxStack;
         }
 
-        public void ShowLoot(List<StackingInventory.ItemStack> itemStackList)
-        {
-            _currentLootList = itemStackList;
-            UpdateLootPanel();
-        }
-
-        private void UpdateLootPanel()
+        private void UpdateInventoryPanel()
         {
             if(_instantiatedItemDisplay == null) _instantiatedItemDisplay = new List<ItemDisplayUI>();
             if(_instantiatedItemDisplay.Count > 0)
@@ -40,7 +44,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
                 _instantiatedItemDisplay.Clear();
             }
 
-            foreach(StackingInventory.ItemStack itemStack in _currentLootList)
+            foreach(StackingInventory.ItemStack itemStack in _inventory.InventoryContent)
             {
                 ItemDisplayUI itemDisplay = Instantiate(_itemDisplayPrefab, _itemDisplayParent);
                 itemDisplay.SetItemDisplay(_itemDatabase.GetItemSprite(itemStack.ItemID), itemStack.ItemAmount, () => OnClickItemDisplay(itemStack));
@@ -49,9 +53,7 @@ namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
 
             void OnClickItemDisplay(StackingInventory.ItemStack itemStack)
             {
-                _currentLootList.Remove(itemStack);
-                _inventory.AddItem(itemStack.ItemID, itemStack.ItemAmount);
-                UpdateLootPanel();
+                _inventory.RemoveItem(itemStack.ItemID, 1);
             }
         }
     }
