@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.Events;
 
-namespace Katakuri.SystemsWorkshop.StackingInventory1.Example2
+namespace Katakuri.SystemsWorkshop.StackingInventory.Example2
 {
     public class InventorySlotUI : DragDropSlotUI
     {

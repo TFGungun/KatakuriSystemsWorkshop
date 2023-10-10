@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
+namespace Katakuri.SystemsWorkshop.StackingInventory.Example1
 {
     public class EnemyPanelUI : MonoBehaviour
     {

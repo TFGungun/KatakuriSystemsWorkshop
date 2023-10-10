@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Katakuri.SystemsWorkshop.StackingInventory1.Example;
+using Katakuri.SystemsWorkshop.StackingInventory.Example;
 
-namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
+namespace Katakuri.SystemsWorkshop.StackingInventory.Example1
 {
     public class LootPanelUI : MonoBehaviour
     {

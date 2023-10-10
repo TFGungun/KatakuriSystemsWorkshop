@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Katakuri.SystemsWorkshop.StackingInventory1
+namespace Katakuri.SystemsWorkshop.StackingInventory
 {
     [System.Serializable]
     public class StackingInventory

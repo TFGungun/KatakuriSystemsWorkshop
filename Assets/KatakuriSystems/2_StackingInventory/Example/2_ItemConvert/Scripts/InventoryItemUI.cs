@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-namespace Katakuri.SystemsWorkshop.StackingInventory1.Example2
+namespace Katakuri.SystemsWorkshop.StackingInventory.Example2
 {
     public class InventoryItemUI : DragDropItemUI, IPointerClickHandler
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace Katakuri.SystemsWorkshop.StackingInventory1.Example1
+namespace Katakuri.SystemsWorkshop.StackingInventory.Example1
 {
     public class ItemDisplayUI : MonoBehaviour
     {
